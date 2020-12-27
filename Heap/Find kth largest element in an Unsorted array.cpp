@@ -1,9 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// QUICKSORT IMPLEMENTATION
-// to find the kth largest element in a unsorted array
+// Find kth largest element;
+// Heap/Quicksort
 
+/* First of all let us understand how do we partition the array on the basis of pivot
+        so we take the last element of the given piece of array and assign its value to variable pivot
+        
+        We begin with initializing a pointer{not actual pointer}
+        which stores the position, the peculiarity of this position is such that the element to the
+        right of this position are compulsorily lesser than the pivot and at that position greater... 
+        
+        So we assign the vale to this pointer as low.
+        Now we run a loop from beginning low -->> high by i.
+        
+            1. As i points to the the location with value greater than pivot we do nothing;
+            2. As i points to the location having value lesser than the pivot what we do is we replace this {i} value with 
+            the value at pointer. 
+            so what happens is that the values in array UPTO and AT pointer are <<== pivot,
+            Now increase the pointer by 1 ,hence the previously described property of the pointer is retained
+        
+*/
 /* First let us understand mechanism of quicksort
     In quicksort we partition the array into two halves at one side all elements lesser than or equal to
     the pivot and at other side the elements greater than the pivot.
@@ -20,44 +37,34 @@ using namespace std;
             run partioning algorithm from pivot_occupied_postion + 1 to high;
     3. YOU MADE IT MANNNNNNNNN.......
 */
-
-int partition_by(int arr[],int low,int high,int pivot){
-    int piv = arr[pivot];
-    int smaller_uptome = low - 1;
-    for(int i = low; i <= high; i++){
-        if (piv >= arr[i]){
-            smaller_uptome++;
-            swap(arr[i],arr[smaller_uptome]);
-    }}
-    return smaller_uptome;
+int partitionby(int* A,int low,int high){
+    int pivot = A[high];
+    int smalluptome = low;            // It is certian that the elements to the left are compulsorily smaller than pivot.
+                                      // Not sure about the element it is standing on........
+    for(int i = low;i <= high;i++){
+        if(A[i] <= pivot){
+            swap(A[i],A[smalluptome]);
+            smalluptome++;
+        }
     }
-
-void print(int arr[],int sizearr){
-    for(int i = 0;i<sizearr;i++){
-        cout << arr[i] << " ";
-        cout << "\n";
-    }
+    return smalluptome-1;
 }
 
-int findkth(int arr[], int low,int high,int k){
+int kthlargest(int* arr,int low,int high,int k){
+    int result = partitionby(arr,low,high); // returns the final position of the pivot
 
-    int result ;
-    result = partition_by(arr,low,high,high);
-
-    if (result == k){ return arr[k];}
-    else if (result < k) {findkth(arr,result + 1,high,k);}
-    else {findkth(arr,low,result-1,k);}
-
+    if (result == k){return *(arr+k);}
+    else if (result < k) {return kthlargest(arr,result+1,high,k);}
+    else {return kthlargest(arr,low,result-1,k);}
 }
-
 
 
 int main(){
-    int arr[] = {3,22,5,7,4,6,7,5};
+    int arr[] = {1,6,4,3,7,7,6,9};
+    int k = 8;
     int len = sizeof(arr)/sizeof(arr[0]);
     int low = 0;
-    int high = len-1;
-    int kth = 7;
-    cout << findkth(arr,low,high,kth-1);
-    return 0;
+    int high = len - 1;
+    cout << kthlargest(&arr[0],low,high,k-1);
 }
+
