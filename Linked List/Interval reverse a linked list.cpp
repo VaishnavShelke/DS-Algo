@@ -2,10 +2,18 @@
 #include <stdio.h>
 using namespace std;
 
-// Find the common elements in given 3 sorted arrays
+/*
+In this what we do is we break the current linked list into several linked list of size == k.
+    And the remaiming unes into another linked list
+While breaking the linked list we also reverse the ---->> to <<---- connnections in the linkedlist
+        This we do till the kth element is reached and then store the pointer to this kth element
+        in set_of_linked_list[0]
+        and so on.
+After getting the list of all these broken chains with each element of set_of_linked_list as the head of new lists formed
+respectively.
+We concanate them......
+*/
 
-#include<iostream>
-using namespace std;
 
 // In this linked list all new elements are adde to the front of the linked list
 class Node{
