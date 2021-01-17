@@ -3,6 +3,7 @@
 using namespace std;
  
 // Maximum Product Subset of an array
+// Also considers fractional values
 
 bool comparer(int a,int b){
     return(abs(a)>abs(b));
