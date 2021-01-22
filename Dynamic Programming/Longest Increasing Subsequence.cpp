@@ -48,6 +48,6 @@ int main(){
         }
     }
 
-    cout << "The longest inreasing subsequence has length ... " << longest_uptome[len-1];
+    cout << "The longest inreasing subsequence has length ... " << *max_element(longest_uptome,longest_uptome + len);
     return 0;
 }
