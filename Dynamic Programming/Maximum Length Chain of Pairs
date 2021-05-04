@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+#include <iostream>
+#include<vector>
+using namespace std;
+
+//Maximum Length Chain of Pairs 
+
+bool comparer(vector<int> &v1, vector<int> &v2){
+    return v1[0] < v2[0];
+}
+
+int main(){
+    vector<vector<int>> slabs = {{5, 24}, {39, 60}, {15, 28}, {27, 40}, {50, 90} };
+    sort(slabs.begin(),slabs.end(),comparer);
+    int longestchainuptome[5];
+    longestchainuptome[0] = 1;
+    int num = slabs.size();
+    int first,last,j;
+
+
+    for(int i = 1; i<num ; i++){
+        first = slabs[i][0];
+        longestchainuptome[i] = 1;
+        j = i-1;
+        while(j != -1){
+            last = slabs[j][1];
+            if(first > last){
+                longestchainuptome[i] = max(longestchainuptome[i],longestchainuptome[j]+1);
+            }
+            j--;
+        }
+    }
+    cout << longestchainuptome[num-1];
+}
