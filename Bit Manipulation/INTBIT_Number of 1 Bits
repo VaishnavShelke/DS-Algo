@@ -1,0 +1,19 @@
+Write a function that takes an unsigned integer and returns the number of  1 bits it has.
+
+Example:
+
+The 32-bit integer 11 has binary representation
+
+00000000000000000000000000001011
+so the function should return 3.
+
+Note that since Java does not have unsigned int, use long for Java
+
+My Approach:
+    Simplest approaach even a child can figure out....
+  
+How do intellegent people think
+    take for example n = 100010101000100100
+    and            n-1 = 100010101000100011
+            if(n & n-1)
+                n = n & n-1; count++;
