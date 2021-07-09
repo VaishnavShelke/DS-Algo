@@ -1,0 +1,22 @@
+Problem Description
+
+Given an array A containing N integers.
+
+You need to find the maximum sum of triplet ( Ai + Aj + Ak ) such that 0 <= i < j < k < N and Ai < Aj < Ak.
+
+If no such triplet exist return 0.
+
+My Approach:
+  was similar to the approach given in the hint section but it was doing the same thing in more complicated way.
+  So although my intuition was correct, but i will prefer hint approach over my approach.
+  
+  what it wanted to say is that for every index i_index save the minimum element until i_index-1 and
+  maximum element after i_index + 1;
+  
+  After this activity is done check 
+  if( minim[i] < arr[i] && maxim[i] > arr[i])
+    store_maxSum = max( store_maxSum, minim[i] + arr[i] + maxim[i])
+    
+  Hence our solution is found
+    
+  
