@@ -1,0 +1,28 @@
+Problem Description
+
+Reverse the bits of an 32 bit unsigned integer A.
+
+
+
+Problem Constraints
+0 <= A <= 232
+
+
+
+Input Format
+First and only argument of input contains an integer A.
+
+
+
+Output Format
+Return a single unsigned integer denoting the decimal value of reversed bits.
+
+
+My Approach:
+    Given Number : 10100010001111
+    To output the reverse we initialize a number as reverCe = 00000000000000;
+    now while(Number){
+    reverCe <<= 1;
+    reverCe = reverCe | ( Number & 1 );
+    Number >>= 1;
+    }
