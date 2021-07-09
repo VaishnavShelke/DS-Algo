@@ -1,0 +1,22 @@
+Problem Description
+
+You are in an infinite 2D grid where you can move in any of the 8 directions
+
+(x,y) to
+(x-1, y-1),
+(x-1, y) ,
+(x-1, y+1),
+(x , y-1),
+(x , y+1),
+(x+1, y-1),
+(x+1, y) ,
+(x+1, y+1)
+You are given a sequence of points and the order in which you need to cover the points.. 
+Give the minimum number of steps in which you can achieve it. You start from the first point.
+
+My Approach:
+  I had completely misunderstood the problem, but the problem statement essentially is that given a point start_1 I have to reach end_1 in minimum steps
+  { Diagonally, Vertically and Horizontally}.
+  So the solution is very easy, always take the shortest path which can be vertical X ,
+  horizontal Y or Diagonal X or Y  or can be combination of any two { Diagonal + Vertical / Diagonal + Horizontal }.
+  But in any case we have to move at least the maximum of (X,Y) even is shortest path is taken.
